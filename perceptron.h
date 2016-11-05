@@ -1,11 +1,22 @@
 #ifndef PERCEPTRON_H
 #define PERCEPTRON_H
 
+#include <QWidget>
+#include <QMouseEvent>
+
 
 class perceptron
 {
 public:
     perceptron();
+private:
+    randweight();
+    short check(int fieldValue[][5]);
+    correctweight(int fieldValue[][5], double m, double err);
+    double fRand(double fMin, double fMax);
+private:
+    double weights[5][5];
+    double bias;
 };
 
 #endif // PERCEPTRON_H
