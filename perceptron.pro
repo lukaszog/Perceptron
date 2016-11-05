@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     printrectangle.cpp \
-    perceptron.cpp
+    perceptron.cpp \
+    teacher.cpp
 
 HEADERS  += mainwindow.h \
     printrectangle.h \
-    perceptron.h
+    perceptron.h \
+    teacher.h
 
 FORMS    += mainwindow.ui

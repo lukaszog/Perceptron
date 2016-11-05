@@ -5,7 +5,18 @@
 
 PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent)
 {
-    this->resetClickedIndex();
+    for(int i=0; i<5; i++)
+    {
+        for(int j=0; j<5; j++)
+        {
+            p[i][j] = * new perceptron();
+            p[i][j].randweight();
+
+        }
+    }
+
+//    tech = new teacher(points);
+
 }
 
 void PrintRectangle::paintEvent(QPaintEvent *)

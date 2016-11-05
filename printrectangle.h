@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <teacher.h>
+#include <perceptron.h>
 
 
 class PrintRectangle : public QWidget
@@ -18,6 +20,9 @@ private:
     int mXIndex;
     int mYIndex;
     QVector<QPoint> points;
+    teacher tech;
+    perceptron p[5][5];
+    double techconst = 0.1;
 
 signals:
 

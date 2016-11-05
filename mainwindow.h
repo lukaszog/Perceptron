@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <perceptron.h>
+#include <printrectangle.h>
+#include <teacher.h>
 
 namespace Ui {
 class MainWindow;

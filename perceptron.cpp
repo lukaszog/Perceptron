@@ -4,6 +4,10 @@ perceptron::perceptron()
 {
 
 }
+perceptron& perceptron::operator=(const perceptron&){
+
+    return * this;
+}
 
 perceptron::randweight()
 {
