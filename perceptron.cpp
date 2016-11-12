@@ -32,9 +32,7 @@ perceptron::correctweight(int fieldValue[][5], double m, double err)
             weights[i][j] += correct;
         }
     }
-
     bias -= err;
-
 }
 
 short perceptron::check(int fieldValue[][5])
@@ -47,7 +45,6 @@ short perceptron::check(int fieldValue[][5])
             result += weights[i][j] * fieldValue[i][j];
         }
     }
-
     return (short) ((result - bias>=0)?1:-1);
 }
 
