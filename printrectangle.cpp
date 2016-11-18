@@ -14,9 +14,7 @@ PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent)
 
         }
     }
-
 //    tech = new teacher(points);
-
 }
 
 void PrintRectangle::paintEvent(QPaintEvent *)
@@ -26,12 +24,6 @@ void PrintRectangle::paintEvent(QPaintEvent *)
     int ypos=20;
     int recWidth=50;
     int recHeight=50;
-
-    for(int k=0; k<points.size(); k++){
-
-        qDebug("%d %d", points[k].x(), points[k].y());
-
-    }
 
     for(int i=0; i<5; i++)
     {
@@ -44,6 +36,7 @@ void PrintRectangle::paintEvent(QPaintEvent *)
                   if( i == points[k].x() && j == points[k].y() )
                   {
                      color = Qt::black;
+                     clicked[i][j] = 1;
                   }
 
             }
@@ -59,12 +52,6 @@ void PrintRectangle::mousePressEvent(QMouseEvent *ev)
     QPoint point = ev->pos();
     this->updateIndexFromPoint( point );
     update();
-}
-
-void PrintRectangle::resetClickedIndex()
-{
-    mXIndex = -1;
-    mYIndex = -1;
 }
 
 void PrintRectangle::updateIndexFromPoint(const QPoint &point)
@@ -93,9 +80,5 @@ void PrintRectangle::updateIndexFromPoint(const QPoint &point)
         if(!removed){
            points.append(QPoint(mXIndex,mYIndex));
         }
-    }
-    else
-    {
-       // resetClickedIndex();
     }
 }

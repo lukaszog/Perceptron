@@ -19,7 +19,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_learn_clicked()
 {
-
+        for(int i=0; i<5; i++)
+        {
+            for(int j=0; j<5; j++)
+            {
+              //  QDebug("%d", clicked[i][j]);
+            }
+        }
 }
 
 void MainWindow::on_classify_clicked()

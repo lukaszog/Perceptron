@@ -16,10 +16,11 @@ public:
 private:
     void resetClickedIndex();
     void updateIndexFromPoint( const QPoint& point);
-private:
+public:
     int mXIndex;
     int mYIndex;
     QVector<QPoint> points;
+    bool clicked[5][5] = {};
     teacher tech;
     perceptron p[5][5];
     double techconst = 0.1;
