@@ -3,22 +3,25 @@
 
 #include <QVector>
 #include <QList>
+#include "perceptron.h"
 
 class teacher
 {
 public:
+
+    class perceptron;
+
     teacher();
-    teacher(int dataFromMatrix[][5]);
+    teacher(bool dataFromMatrix[][5]);
     readDataFromFile();
     writeToFile();
-    learnPerceptrons();
     learnPerceptron();
+    void learnPerceptrons(perceptron p[][5]);
     randPerceptronsWights();
     saveDataToFile(int tab[], int value);
     int resultVector[5][5];
     QList<QVector<int>> savedData;
-
-
+    teacher& operator=(const teacher&);
 };
 
 #endif // TEACHER_H

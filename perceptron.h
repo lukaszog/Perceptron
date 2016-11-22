@@ -3,8 +3,6 @@
 
 #include <QWidget>
 #include <QMouseEvent>
-#include <teacher.h>
-
 
 class perceptron
 {

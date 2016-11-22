@@ -8,7 +8,12 @@ teacher::teacher()
 
 }
 
-teacher::teacher(int dataFromMatrix[][5])
+teacher& teacher::operator=(const teacher&){
+
+    return * this;
+}
+
+teacher::teacher(bool dataFromMatrix[][5])
 {
     for(int i=0; i<5; i++)
     {
@@ -35,6 +40,11 @@ teacher::readDataFromFile()
             load[i] = atoi(line[2*i]);
         }*/
     }
+}
+
+void teacher::learnPerceptrons(perceptron p[][5])
+{
+
 }
 
 teacher::saveDataToFile(int tab[], int value)

@@ -6,6 +6,7 @@
 #include <printrectangle.h>
 #include <teacher.h>
 
+
 namespace Ui {
 class MainWindow;
 }

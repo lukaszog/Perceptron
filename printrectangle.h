@@ -21,9 +21,11 @@ public:
     int mYIndex;
     QVector<QPoint> points;
     bool clicked[5][5] = {};
-    teacher tech;
+    teacher *tech;
     perceptron p[5][5];
     double techconst = 0.1;
+    void savePoints(QVector<QPoint> points);
+    QVector<QPoint> loadPoints();
 
 signals:
 
