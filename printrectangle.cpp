@@ -2,25 +2,27 @@
 #include <QWidget>
 #include <QPainter>
 
-
-PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent)
+PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
+    p(5, std::vector<perceptron>(5))
 {
+
     tech = new teacher(clicked);
+
 
     for(int i=0; i<5; i++)
     {
         for(int j=0; j<5; j++)
         {
-            p[i][j] = * new perceptron();
+            p[i][j] = new perceptron();
             p[i][j].randweight();
         }
     }
 
     double learnConst = 0.1;
-
-    tech->learnPerceptrons(p);
-
+    //tech->learnPerceptrons(p);
 }
+
+
 
 void PrintRectangle::savePoints(QVector<QPoint> points)
 {

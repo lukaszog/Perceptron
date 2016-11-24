@@ -8,7 +8,6 @@ class perceptron
 {
 public:
     perceptron();
-public:
     randweight();
     short check(int fieldValue[][5]);
     correctweight(int fieldValue[][5], double m, double err);

@@ -42,7 +42,7 @@ teacher::readDataFromFile()
     }
 }
 
-void teacher::learnPerceptrons(perceptron p[][5])
+void teacher::learnPerceptrons(perceptron * (&array)[5][5])
 {
 
 }
