@@ -41,8 +41,12 @@ teacher::readDataFromFile()
         }*/
     }
 }
+void teacher::cos(int a)
+{
+    qDebug("%d", a);
+}
 
-void teacher::learnPerceptrons(perceptron * (&array)[5][5])
+void teacher::learnPerceptrons(std::vector<std::vector<perceptron>> &p)
 {
 
 }

@@ -16,7 +16,8 @@ public:
     readDataFromFile();
     writeToFile();
     learnPerceptron();
-    void learnPerceptrons(perceptron * (&array)[5][5]);
+    void cos(int a);
+    void learnPerceptrons(std::vector<std::vector<perceptron>> &p);
     randPerceptronsWights();
     saveDataToFile(int tab[], int value);
     int resultVector[5][5];
