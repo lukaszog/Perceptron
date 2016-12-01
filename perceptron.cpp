@@ -12,39 +12,35 @@ perceptron& perceptron::operator=(const perceptron&){
 perceptron::randweight()
 {
 
-    for(int i=0; i<5; i++)
+    for(int i=0; i<25; i++)
     {
-        for(int j=0; j<5; j++)
-        {
-            weights[i][j] = this->fRand(0,1);
-        }
+
+        weights[i] = this->fRand(0,1);
+
     }
     bias = this->fRand(0,1);
 }
 
-perceptron::correctweight(int fieldValue[][5], double m, double err)
+perceptron::correctweight(QVector<int> readed, double m, double err)
 {
-    for(int i=0; i<5; i++)
+    for(int i=0; i<25; i++)
     {
-        for(int j=0; j<5; j++)
-        {
-            double correct = err * fieldValue[i][j];
-            weights[i][j] += correct;
-        }
+         double correct = err * readed.at(i) * m;
+         weights[i] += correct;
+
     }
     bias -= err;
 }
 
-short perceptron::check(int fieldValue[][5])
+short perceptron::check(QVector<int> readed)
 {
     double result = 0.0;
-    for(int i=0; i<5; i++)
+
+    for(int i=0; i<25; i++)
     {
-        for(int j=0; j<5; j++)
-        {
-            result += weights[i][j] * fieldValue[i][j];
-        }
+         result +=  weights[i] * readed.at(i);
     }
+
     return (short) ((result - bias>=0)?1:-1);
 }
 

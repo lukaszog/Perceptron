@@ -9,11 +9,11 @@ class perceptron
 public:
     perceptron();
     randweight();
-    short check(int fieldValue[][5]);
-    correctweight(int fieldValue[][5], double m, double err);
+    short check(QVector<int> readed);
+    correctweight(QVector<int> readed, double m, double err);
     double fRand(double fMin, double fMax);
     perceptron& operator=(const perceptron&);
-    double weights[5][5];
+    double weights[25];
     double bias;
 };
 
