@@ -95,7 +95,7 @@ teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
           }
     }
 
-    qDebug("%s", "Zakonczylem nauke...");
+    qDebug("%s", "Zakonczylem  nauke...");
 
 }
 
