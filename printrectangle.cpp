@@ -1,6 +1,9 @@
 #include "printrectangle.h"
 #include <QWidget>
 #include <QPainter>
+#include <QFile>
+#include <QTextStream>
+#include <iostream>
 
 PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
     p(5, std::vector<perceptron>(5))
@@ -16,17 +19,28 @@ PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
     }
     double learnConst = 0.1;
 
-    tech->learnPerceptrons(p);
+    tech->learnPerceptrons(p, learnConst);
 }
 
-void PrintRectangle::savePoints(QVector<QPoint> points)
+void PrintRectangle::savePoints(bool clicked[][5])
 {
-    QFile file("points.bin");
-    if(file.open(QIODevice::WriteOnly))
+
+    QString filename="E:\\Sieci Neuronowe\\Perceptron\\points.txt";
+    QFile file( filename );
+    if ( file.open(QIODevice::ReadWrite | QIODevice::Text) )
     {
-        QDataStream out(&file);
-        out << points;
-        file.close();
+        QTextStream stream( &file );
+
+        for(int i=0; i<5; i++)
+        {
+            for(int j=0; j<5; j++)
+            {
+                stream << clicked[i][j];
+            }
+            stream << endl;
+        }
+    }else{
+        qDebug("%s", "Nie moge otworzyc pliku");
     }
 }
 
@@ -61,7 +75,6 @@ void PrintRectangle::paintEvent(QPaintEvent *)
                   if( i == points[k].x() && j == points[k].y() )
                   {
                      color = Qt::black;
-                     clicked[i][j] = 1;
                   }
 
             }
@@ -92,17 +105,18 @@ void PrintRectangle::updateIndexFromPoint(const QPoint &point)
 
         for(int k=0; k<points.size(); k++){
 
-            qDebug("%d %d", points[k].x(), points[k].y());
-
             if(points[k].x() == mXIndex && points[k].y() == mYIndex){
 
                 points.remove(k);
                 removed = true;
+                clicked[mYIndex][mXIndex] = 0;
             }
 
         }
 
         if(!removed){
+           qDebug("%d %d", mXIndex, mYIndex);
+           clicked[mYIndex][mXIndex] = 1;
            points.append(QPoint(mXIndex,mYIndex));
         }
     }

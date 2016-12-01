@@ -13,9 +13,6 @@ public:
     correctweight(int fieldValue[][5], double m, double err);
     double fRand(double fMin, double fMax);
     perceptron& operator=(const perceptron&);
-
-
-private:
     double weights[5][5];
     double bias;
 };

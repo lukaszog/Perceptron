@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_learn_clicked()
 {
 
-    ui->widget->savePoints(ui->widget->points);
+    ui->widget->savePoints(ui->widget->clicked);
 
 }
 

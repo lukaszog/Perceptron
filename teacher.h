@@ -9,15 +9,13 @@ class teacher
 {
 public:
 
-    class perceptron;
-
     teacher();
     teacher(bool dataFromMatrix[][5]);
     readDataFromFile();
     writeToFile();
-    learnPerceptron();
+    learnPerceptron(perceptron p, int number, double learnConst);
     void cos(int a);
-    void learnPerceptrons(std::vector<std::vector<perceptron>> &p);
+    void learnPerceptrons(std::vector<std::vector<perceptron>> &p, double learnConst);
     randPerceptronsWights();
     saveDataToFile(int tab[], int value);
     int resultVector[5][5];

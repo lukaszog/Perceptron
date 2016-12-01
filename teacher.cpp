@@ -41,13 +41,24 @@ teacher::readDataFromFile()
         }*/
     }
 }
-void teacher::cos(int a)
+
+void teacher::learnPerceptrons(std::vector<std::vector<perceptron>> &vec, double learnConst)
 {
-    qDebug("%d", a);
+    int number=0;
+
+    for (const auto& inner : vec) {
+         for (const auto& item : inner) {
+             learnPerceptron(item, number, learnConst);
+             number++;
+         }
+     }
+
 }
 
-void teacher::learnPerceptrons(std::vector<std::vector<perceptron>> &p)
+teacher::learnPerceptron(perceptron p, int number, double learnConst)
 {
+
+    p.randweight();
 
 }
 
