@@ -50,7 +50,7 @@
      <string>Classyfy</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="learnValue">
+   <widget class="QLineEdit" name="numberToLearn">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -67,7 +67,7 @@
      <x>0</x>
      <y>0</y>
      <width>822</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

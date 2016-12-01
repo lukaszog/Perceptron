@@ -24,7 +24,7 @@ public:
     teacher *tech;
     std::vector<std::vector<perceptron>> p;
     double techconst = 0.1;
-    void savePoints(bool clicked[5][5]);
+    void savePoints(bool clicked[5][5], QString numberToLearnValue);
     QVector<QPoint> loadPoints();
 
 

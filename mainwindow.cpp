@@ -20,7 +20,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_learn_clicked()
 {
 
-    ui->widget->savePoints(ui->widget->clicked);
+    QString numberToLearnVal = ui->numberToLearn->text();
+    ui->widget->savePoints(ui->widget->clicked, numberToLearnVal);
 
 }
 

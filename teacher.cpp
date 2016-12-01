@@ -1,8 +1,9 @@
 #include "teacher.h"
 #include <QFile>
+#include <QDebug>
 #include <QTextStream>
 #include <fstream>
-
+#include <iostream>
 teacher::teacher()
 {
 
@@ -27,18 +28,23 @@ teacher::teacher(bool dataFromMatrix[][5])
 
 teacher::readDataFromFile()
 {
-    QFile file("data.txt");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return 0;
+    QFile inputFile("E:\\Sieci Neuronowe\\Perceptron\\points.txt");
+    if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+       QTextStream in(&inputFile);
+       while (!in.atEnd())
+       {
+          QString line = in.readLine();
+          QVector<int> readLine;
 
-    while (!file.atEnd()) {
-        QByteArray line = file.readLine();
+          for(int i=0; i<line.size(); i++)
+          {
+             readLine.append(line[i].digitValue());
+          }
 
-       /* int *load = new int[26];
-        for(int i=0; i<26; i++)
-        {
-            load[i] = atoi(line[2*i]);
-        }*/
+          savedData.append(readLine);
+       }
+       inputFile.close();
     }
 }
 
@@ -52,7 +58,6 @@ void teacher::learnPerceptrons(std::vector<std::vector<perceptron>> &vec, double
              number++;
          }
      }
-
 }
 
 teacher::learnPerceptron(perceptron p, int number, double learnConst)
@@ -60,11 +65,15 @@ teacher::learnPerceptron(perceptron p, int number, double learnConst)
 
     p.randweight();
 
+
+
+    qDebug("%s", "Zakonczylem nauke...");
+
 }
 
 teacher::saveDataToFile(int tab[], int value)
 {
-    QFile file("data.txt");
+    /*QFile file("data.txt");
 
     if(!file.open(QIODevice::Append | QIODevice::Text))
         return 0;
@@ -88,5 +97,5 @@ teacher::saveDataToFile(int tab[], int value)
      for (QVector<QString>::iterator iter = added.begin(); iter != added.end(); iter++){
          out << *iter;
      }
-     file.close();
+     file.close();*/
 }

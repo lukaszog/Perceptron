@@ -18,16 +18,17 @@ PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
         }
     }
     double learnConst = 0.1;
-
     tech->learnPerceptrons(p, learnConst);
 }
 
-void PrintRectangle::savePoints(bool clicked[][5])
+void PrintRectangle::savePoints(bool clicked[][5], QString numberToLearnValue)
 {
+    numberToLearnValue = numberToLearnValue.simplified();
+    numberToLearnValue.replace( " ", "" );
 
     QString filename="E:\\Sieci Neuronowe\\Perceptron\\points.txt";
-    QFile file( filename );
-    if ( file.open(QIODevice::ReadWrite | QIODevice::Text) )
+    QFile file(filename);
+    if (file.open(QIODevice::Append | QIODevice::Text))
     {
         QTextStream stream( &file );
 
@@ -37,11 +38,12 @@ void PrintRectangle::savePoints(bool clicked[][5])
             {
                 stream << clicked[i][j];
             }
-            stream << endl;
         }
+        stream << numberToLearnValue << endl;
     }else{
         qDebug("%s", "Nie moge otworzyc pliku");
     }
+    qDebug("%s", "Zakonczylem zapis...");
 }
 
 QVector<QPoint> PrintRectangle::loadPoints()
@@ -104,18 +106,14 @@ void PrintRectangle::updateIndexFromPoint(const QPoint &point)
         mYIndex = y / 60; //rec height + spacing
 
         for(int k=0; k<points.size(); k++){
-
             if(points[k].x() == mXIndex && points[k].y() == mYIndex){
-
                 points.remove(k);
                 removed = true;
                 clicked[mYIndex][mXIndex] = 0;
             }
-
         }
 
         if(!removed){
-           qDebug("%d %d", mXIndex, mYIndex);
            clicked[mYIndex][mXIndex] = 1;
            points.append(QPoint(mXIndex,mYIndex));
         }
