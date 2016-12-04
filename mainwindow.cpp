@@ -28,7 +28,7 @@ void MainWindow::on_learn_clicked()
 void MainWindow::on_classify_clicked()
 {
     QVector<int> readed;
-
+    int ile=1;
     for(int i=0; i<5; i++)
     {
         for(int j=0; j<5; j++)
@@ -37,11 +37,11 @@ void MainWindow::on_classify_clicked()
         }
     }
 
-    for(int i=0; i<2; i++)
+    for(int i=0; i<10; i++)
     {
        if(ui->widget->p[i].check(readed) == 1)
        {
-             qDebug() << "Wykryłem liczbe: " << 1;
+             qDebug() << "Wykryłem liczbe: " << i;
        }
     }
 }
