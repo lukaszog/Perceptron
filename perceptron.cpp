@@ -1,5 +1,5 @@
 #include "perceptron.h"
-
+#include<QDebug>
 perceptron::perceptron()
 {
 
@@ -14,9 +14,7 @@ perceptron::randweight()
 
     for(int i=0; i<25; i++)
     {
-
         weights[i] = this->fRand(0,1);
-
     }
     bias = this->fRand(0,1);
 }
@@ -32,16 +30,24 @@ perceptron::correctweight(QVector<int> readed, double m, double err)
     bias -= err;
 }
 
-short perceptron::check(QVector<int> readed)
+int perceptron::check(QVector<int> readed)
 {
     double result = 0.0;
 
     for(int i=0; i<25; i++)
     {
          result +=  weights[i] * readed.at(i);
+         qDebug() << result;
     }
 
-    return (short) ((result - bias>=0)?1:-1);
+    if(( result - bias >= 0))
+    {
+        //qDebug() << "Zwracam 1";
+    }else{
+     //   qDebug()<<"Zwracam -1";
+    }
+
+    return (( result - bias >= 0 ) ? 1 : -1 );
 }
 
 double perceptron::fRand(double fMin, double fMax)

@@ -22,10 +22,8 @@ public:
     QVector<QPoint> points;
     bool clicked[5][5] = {};
     teacher *tech;
-    std::vector<std::vector<perceptron>> p;
-    double techconst = 0.1;
+    std::vector<perceptron> p;
     void savePoints(bool clicked[5][5], QString numberToLearnValue);
-    QVector<QPoint> loadPoints();
 
 
 signals:

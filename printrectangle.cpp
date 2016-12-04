@@ -6,16 +6,13 @@
 #include <iostream>
 
 PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
-    p(5, std::vector<perceptron>(5))
+    p(std::vector<perceptron>(10))
 {
     tech = new teacher(clicked);
 
-    for(int i=0; i<5; i++)
+    for(int i=0; i<10; i++)
     {
-        for(int j=0; j<5; j++)
-        {
-            p[i][j].randweight();
-        }
+          p[i].randweight();
     }
     double learnConst = 0.1;
     tech->learnPerceptrons(p, learnConst);
@@ -44,18 +41,6 @@ void PrintRectangle::savePoints(bool clicked[][5], QString numberToLearnValue)
         qDebug("%s", "Nie moge otworzyc pliku");
     }
     qDebug("%s", "Zakonczylem zapis...");
-}
-
-QVector<QPoint> PrintRectangle::loadPoints()
-{
-    QFile file("points.bin");
-    if(file.open(QIODevice::ReadOnly))
-    {
-        QDataStream in(&file);
-        in >> points;
-        file.close();
-    }
-    return points;
 }
 
 void PrintRectangle::paintEvent(QPaintEvent *)

@@ -37,15 +37,11 @@ void MainWindow::on_classify_clicked()
         }
     }
 
-
-    for(int i=0; i<5; i++)
+    for(int i=0; i<2; i++)
     {
-        for(int j=0; j<5; j++)
-        {
-            if(ui->widget->p[i][j].check(readed) == 1)
-            {
-                qDebug() << "Cos mam";
-            }
-        }
+       if(ui->widget->p[i].check(readed) == 1)
+       {
+             qDebug() << "Wykryłem liczbe: " << 1;
+       }
     }
 }

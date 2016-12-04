@@ -9,7 +9,7 @@ class perceptron
 public:
     perceptron();
     randweight();
-    short check(QVector<int> readed);
+    int check(QVector<int> readed);
     correctweight(QVector<int> readed, double m, double err);
     double fRand(double fMin, double fMax);
     perceptron& operator=(const perceptron&);

@@ -8,17 +8,15 @@
 class teacher
 {
 public:
-
     teacher();
-    teacher(bool dataFromMatrix[][5]);
-    readDataFromFile();
+    teacher(bool clicked[][5]);
+    void readDataFromFile();
     writeToFile();
-    learnPerceptron(perceptron p, int number, double learnConst);
+    void learnPerceptron(perceptron p, int number, double learnConst);
     void cos(int a);
-    void learnPerceptrons(std::vector<std::vector<perceptron>> &p, double learnConst);
+    void learnPerceptrons(std::vector<perceptron> &p, double learnConst);
     randPerceptronsWights();
     saveDataToFile(int tab[], int value);
-    int resultVector[5][5];
     QList<QVector<int>> savedData;
     teacher& operator=(const teacher&);
 };

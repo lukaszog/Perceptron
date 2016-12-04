@@ -16,17 +16,10 @@ teacher& teacher::operator=(const teacher&){
 
 teacher::teacher(bool dataFromMatrix[][5])
 {
-    for(int i=0; i<5; i++)
-    {
-        for(int j=0; j<5; j++)
-        {
-            resultVector[i][j] = dataFromMatrix[i][j];
-        }
-    }
     readDataFromFile();
 }
 
-teacher::readDataFromFile()
+void teacher::readDataFromFile()
 {
     QFile inputFile("E:\\Sieci Neuronowe\\Perceptron\\points.txt");
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -37,7 +30,7 @@ teacher::readDataFromFile()
           QString line = in.readLine();
           QVector<int> readLine;
 
-          for(int i=0; i<line.size(); i++)
+          for(int i=0; i<26; i++)
           {
              readLine.append(line[i].digitValue());
           }
@@ -48,19 +41,18 @@ teacher::readDataFromFile()
     }
 }
 
-void teacher::learnPerceptrons(std::vector<std::vector<perceptron>> &vec, double learnConst)
+void teacher::learnPerceptrons(std::vector<perceptron> &vec, double learnConst)
 {
     int number=0;
 
-    for (const auto& inner : vec) {
-         for (const auto& item : inner) {
-             learnPerceptron(item, number, learnConst);
-             number++;
-         }
-     }
+
+    for (const auto& item : vec) {
+         learnPerceptron(item, number, learnConst);
+         number++;
+    }
 }
 
-teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
+void teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
 {
 
     p.randweight();
@@ -74,6 +66,7 @@ teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
 
     while(!pass)
     {
+          pass = true;
           for (const auto& inner : savedData) {
 
               QVector<int> readed;
@@ -84,6 +77,7 @@ teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
               }
 
               int number = (inner.at(25) == perceptronNumber) ? 1 : -1;
+              //qDebug()<< "Wchodze";
               int error = number - p.check(readed);
 
               if(error != 0)
@@ -94,8 +88,5 @@ teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
 
           }
     }
-
-    qDebug("%s", "Zakonczylem  nauke...");
-
 }
 
