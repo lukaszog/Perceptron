@@ -1,6 +1,7 @@
 #include "printrectangle.h"
 #include <QWidget>
 #include <QPainter>
+#include <QDebug>
 #include <QFile>
 #include <QTextStream>
 #include <iostream>
@@ -8,6 +9,7 @@
 PrintRectangle::PrintRectangle(QWidget *parent) : QWidget(parent),
     p(std::vector<perceptron>(10))
 {
+    qDebug() << "Wykonuje konstruktor";
     tech = new teacher(clicked);
 
     for(int i=0; i<10; i++)

@@ -37,7 +37,7 @@ void MainWindow::on_classify_clicked()
         }
     }
 
-    for(int i=0; i<10; i++)
+    for(int i=0; i<2; i++)
     {
        if(ui->widget->p[i].check(readed) == 1)
        {
