@@ -45,16 +45,16 @@ void teacher::learnPerceptrons(std::vector<perceptron> &vec, double learnConst)
 {
     int number=0;
 
-    for (const auto& item : vec) {
+    for (auto& item : vec) {
          learnPerceptron(item, number, learnConst);
          number++;
     }
 }
 
-void teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnConst)
+void teacher::learnPerceptron(perceptron &p, int perceptronNumber, double learnConst)
 {
 
-    //p.randweight();
+    p.randweight();
 
     bool pass = false;
 
@@ -68,9 +68,9 @@ void teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnCo
     while(!pass)
     {
           pass = true;
-          for (const QVector<int> inner : savedData) {
+          for (QVector<int> inner : savedData) {
 
-              qDebug() << "Linia numer " << ilosc;
+              //qDebug() << "Linia numer " << ilosc;
               ilosc++;
               QVector<int> readed;
 
@@ -83,15 +83,18 @@ void teacher::learnPerceptron(perceptron p, int perceptronNumber, double learnCo
               int number = (inner.at(25) == perceptronNumber) ? 1 : -1;
               //qDebug()<< "Wchodze";
               int error = number - p.check(readed);
+              qDebug() << "Error: " << error;
 
               if(error != 0)
               {
                   pass = false;
-                  qDebug() << "Learn const" << learnConst;
+                  //qDebug() << "Poprawiam wagi" << learnConst;
                   p.correctweight(readed, learnConst, error);
                   //qDebug() << "Poprawiam wagi";
               }
           }
     }
+
+    qDebug() << "Nauczyłem perceptron " << perceptronNumber;
 }
 

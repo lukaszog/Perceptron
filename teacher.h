@@ -12,7 +12,7 @@ public:
     teacher(bool clicked[][5]);
     void readDataFromFile();
     writeToFile();
-    void learnPerceptron(perceptron p, int number, double learnConst);
+    void learnPerceptron(perceptron &p, int number, double learnConst);
     void cos(int a);
     void learnPerceptrons(std::vector<perceptron> &p, double learnConst);
     randPerceptronsWights();
