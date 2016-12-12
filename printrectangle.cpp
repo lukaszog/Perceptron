@@ -43,6 +43,7 @@ void PrintRectangle::savePoints(bool clicked[][5], QString numberToLearnValue)
         qDebug("%s", "Nie moge otworzyc pliku");
     }
     qDebug("%s", "Zakonczylem zapis...");
+   // this->PrintRectangle(QWidget parent);
 }
 
 void PrintRectangle::paintEvent(QPaintEvent *)

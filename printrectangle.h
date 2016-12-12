@@ -25,7 +25,6 @@ public:
     std::vector<perceptron> p;
     void savePoints(bool clicked[5][5], QString numberToLearnValue);
 
-
 signals:
 
 public slots:
